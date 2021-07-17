@@ -7,8 +7,21 @@
         mc:Ignorable="d"
         Title="Rename Sucks" Height="450" Width="800">
     <Grid AllowDrop="True" Drop="DropHandler" Background="Azure">
-        <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontSize="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock TextAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="30"
+                   Grid.Row="0">
             Drag the sucked files to rename here.
         </TextBlock>
+        <TextBox x:Name="SaveDirTextBox"
+                 Grid.Row="1"
+                 TextAlignment="Center"
+                 FontSize="15">
+            ?:\Save Directory
+        </TextBox>
     </Grid>
 </Window>

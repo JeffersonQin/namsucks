@@ -33,6 +33,29 @@ namespace namsucks
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 foreach (string file in files) {
                     Debug.WriteLine(file);
+                    var dialog = new InputDialog();
+                    dialog.filePath = file;
+                    if (dialog.ShowDialog() == true)
+                    {
+                        try
+                        {
+                            string targetPath = "";
+                            if (!System.IO.Directory.Exists(SaveDirTextBox.Text))
+                            {
+                                targetPath = System.IO.Path.Join(System.IO.Path.GetDirectoryName(file), dialog.fileName);
+                            }
+                            else
+                            {
+                                targetPath = System.IO.Path.Join(SaveDirTextBox.Text, dialog.fileName);
+                            }
+                            System.IO.File.Move(file, targetPath);
+                            MessageBox.Show(file + "\n=>" + targetPath);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Move File Failed. \n" + ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
                 }
             }
         }
