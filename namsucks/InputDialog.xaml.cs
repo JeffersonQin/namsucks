@@ -81,6 +81,11 @@ namespace namsucks
         private void ResponseTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             fileName = createDate + "：";
+            if (ResponseTextBox.Text.Split(' ').Length == 1)
+            {
+                fileName += ResponseTextBox.Text + suffix;
+                return;
+            }
             foreach (string tag in ResponseTextBox.Text.Split(' '))
             {
                 fileName += "[" + tag + "]";
