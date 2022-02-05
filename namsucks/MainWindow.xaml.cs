@@ -59,5 +59,10 @@ namespace namsucks
                 }
             }
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
     }
 }

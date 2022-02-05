@@ -81,14 +81,14 @@ namespace namsucks
         private void ResponseTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             fileName = createDate + "：";
-            if (ResponseTextBox.Text.Split(' ').Length == 1)
+            if (ResponseTextBox.Text.Split(' ').Length == 1 || !Properties.Settings.Default.UseTag)
             {
                 fileName += ResponseTextBox.Text + suffix;
                 return;
             }
             foreach (string tag in ResponseTextBox.Text.Split(' '))
             {
-                fileName += "[" + tag + "]";
+                fileName += Properties.Settings.Default.TagForm[0] + tag + Properties.Settings.Default.TagForm[1];
             }
             fileName += suffix;
         }
