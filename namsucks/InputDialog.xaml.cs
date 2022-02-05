@@ -28,7 +28,7 @@ namespace namsucks
             set
             {
                 suffix = System.IO.Path.GetExtension(value);
-                createDate = new System.IO.FileInfo(value).CreationTime.ToString("yyyyMMdd");
+                createDate = new System.IO.FileInfo(value).LastWriteTime.ToString("yyyyMMdd");
                 string name = System.IO.Path.GetFileNameWithoutExtension(value);
                 fileName = createDate + "：" + "[" + name + "]" + suffix;
                 ResponseTextBox.Text = name;
